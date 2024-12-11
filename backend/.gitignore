@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE/Editor-specific files
+.vscode/
+*.swp
+
+# Build files (if applicable)
+dist/
+build/
