@@ -1,13 +1,43 @@
 // index.js is the main entry point for express server 
+// here express connects to mongodb altas cluster 
 
-const express = require('express'); // import express 
-const app = express(); // instantiate express to variable
-app.listen(3000,() => console.log("Server listening at port 3000")); // specify port number where server is going to listen 
+const mongoose = require('mongoose'); 
+const express = require('express'); 
+const app = express(); 
+// Creates instance of express app. 
 
-app.get("/", (req, res) => { 
-  res.send("Hello Wendy"); 
-}); 
+// dotenv loads env. var --> used to keep db uri secure 
+require('dotenv').config(); 
 
-app.get("/about", (req, res) => { 
-  res.send("About route"); 
+// mongodb connection string from .env
+const mongoURI = process.env.ATLAS_URI; 
+
+// Import menuItems model
+// MenuItem is uppercase for variables that represent classes or constructors
+const MenuItem = require('./models/MenuItem'); 
+
+// Middleware to parse JSON 
+app.use(express.json());
+
+// Start the server. 
+const PORT = 3000;
+app.listen(PORT, () => { // app.listen() starts the server and makes it listen for incoming request 
+    console.log(`Server running on http://localhost:${PORT}`);
 })
+
+// Connects to mongodb atlas using url 
+mongoose.connect(mongoURI)
+    .then(() => console.log('Connected to MongoDB Atlas'))
+    .catch(err => console.error('Error connecting to MongoDB:', err));
+
+
+// Get all menu items 
+app.get('/menu', async (req, res) => { 
+  try { 
+    const menuItems = await MenuItem.find(); 
+    res.status(200).send(menuItems); 
+  } catch (err) { 
+    res.status(500).send(err.message)
+  }
+})
+
