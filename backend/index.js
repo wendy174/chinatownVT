@@ -41,3 +41,13 @@ app.get('/menu', async (req, res) => {
   }
 })
 
+// Get all "Lunch"
+app.get('/lunch', async (req, res) => { 
+  try { 
+    const menuItems = await MenuItem.find({category: "Lunch"}); 
+    res.status(200).send(menuItems); 
+  } catch (err) { 
+    res.status(500).send(err.message)
+  }
+})
+
