@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
-import './App.css'
+import { useState, useEffect } from 'react'; 
+import { MenuList } from './components/MenuList'; 
+import './App.css'; 
 
 function App() {
 
@@ -18,11 +19,12 @@ function App() {
     fetchMenuItems(); 
   }, [])
 
-  console.log(menu); 
+  console.log(menu[0])
 
   return (
     <>
      <h1>Chinatown Application</h1>
+     <MenuList menu={menu} />
     </>
   )
 }
