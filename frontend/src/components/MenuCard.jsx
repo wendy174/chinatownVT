@@ -1,10 +1,15 @@
-const MenuCard = ({menu_id, price, description, isSpicy, name}) => { 
+// used to display a single menu item 
+
+export const MenuCard = ({item}) => { 
     return ( 
         <div className= 'menu-card'>
-            <h3>{menu_id}:{name}</h3>
-            <p>{price.default}</p>
-            <p>{description}</p>
-            {isSpicy && <span className="spicy-tag">🌶️ Spicy</span>}
+        <ul>
+            <h3>{item.menu_id}:{item.name}</h3>
+            <p>{item.price}</p>
+            <p>{item.description}</p>
+            {item.isSpicy && <span className="spicy-tag">🌶️ Spicy</span>}
+        </ul>
+       
         </div>
     )
 }
