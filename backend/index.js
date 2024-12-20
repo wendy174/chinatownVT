@@ -4,6 +4,7 @@
 const mongoose = require('mongoose'); 
 const express = require('express'); 
 const app = express(); 
+const cors = require('cors'); 
 // Creates instance of express app. 
 
 // dotenv loads env. var --> used to keep db uri secure 
@@ -30,6 +31,9 @@ mongoose.connect(mongoURI)
     .then(() => console.log('Connected to MongoDB Atlas'))
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
+// cors 
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 
 // Get all menu items 
 app.get('/menu', async (req, res) => { 
@@ -49,5 +53,7 @@ app.get('/lunch', async (req, res) => {
   } catch (err) { 
     res.status(500).send(err.message)
   }
-})
+}); 
+
+
 
