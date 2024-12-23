@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'; 
 import { MenuList } from './components/MenuList'; 
 import './App.css'; 
-import { Button } from './components/Button'
 
 function App() {
 
@@ -20,13 +19,10 @@ function App() {
     fetchMenuItems(); 
   }, [])
 
-  console.log(menu[0])
 
   return (
     <>
      <h1>Chinatown Application</h1>
-     <Button/>
-
      <MenuList menu={menu} />
     </>
   )
