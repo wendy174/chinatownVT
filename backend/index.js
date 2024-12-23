@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const express = require('express'); 
 const app = express(); 
 const cors = require('cors'); 
+
 // Creates instance of express app. 
 
 // dotenv loads env. var --> used to keep db uri secure 
@@ -34,26 +35,53 @@ mongoose.connect(mongoURI)
 // cors 
 app.use(cors({ origin: 'http://localhost:5173' }));
 
+// 
+app.get('/menu', async (req, res) => {
+  try {
+    const menuItems = await mongoose.connection.db
+      .collection('menuItems')  // Directly access the menuItems collection
+      .aggregate([
+        {
+          $group: {
+            _id: "$category",  // Group by category
+            items: { $push: "$$ROOT" }  // Push full documents into 'items' array
+          }
+        },
+        {
+          $sort: { _id: 1 }  // Sort alphabetically by category
+        }
+      ])
+      .toArray();  // Convert aggregation results to an array
+
+    res.status(200).json(menuItems);  // Send response as JSON
+  } catch (error) {
+    console.error('Aggregation Error:', error);
+    res.status(500).send('Error fetching menu items');
+  }
+});
 
 // Get all menu items 
-app.get('/menu', async (req, res) => { 
-  try { 
-    const menuItems = await MenuItem.find(); 
-    res.status(200).send(menuItems); 
-  } catch (err) { 
-    res.status(500).send(err.message)
-  }
-})
+// app.get('/menu', async (req, res) => { 
+//   try { 
+//     const menuItems = await MenuItem.find(); 
+//     res.status(200).send(menuItems); 
+//   } catch (err) { 
+//     res.status(500).send(err.message)
+//   }
+// })
+
 
 // Get all "Lunch"
-app.get('/lunch', async (req, res) => { 
-  try { 
-    const menuItems = await MenuItem.find({category: "Lunch"}); 
-    res.status(200).send(menuItems); 
-  } catch (err) { 
-    res.status(500).send(err.message)
-  }
-}); 
+// app.get('/lunch', async (req, res) => { 
+//   try { 
+//     const menuItems = await MenuItem.find({category: "Lunch"}); 
+//     res.status(200).send(menuItems); 
+//   } catch (err) { 
+//     res.status(500).send(err.message)
+//   }
+// }); 
+
+
 
 
 

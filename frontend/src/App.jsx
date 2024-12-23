@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'; 
-import { MenuList } from './components/MenuList'; 
 import './App.css'; 
+import { CategoryList } from './components/CategoryList';
 
 function App() {
 
@@ -23,7 +23,7 @@ function App() {
   return (
     <>
      <h1>Chinatown Application</h1>
-     <MenuList menu={menu} />
+     <CategoryList menu={menu} />
     </>
   )
 }
