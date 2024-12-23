@@ -27,8 +27,8 @@ const menuItemSchema = new mongoose.Schema({
     large: { type: Number, default: null }
   },
   description: {
-    type: String,
-    default: null  // Optional field
+    category: { type: String, default: null }, // Category description 
+    item: { type: String, default: null} // Item specific description 
   },
   isSpicy: {
     type: Boolean,
