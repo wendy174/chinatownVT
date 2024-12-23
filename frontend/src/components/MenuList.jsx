@@ -2,10 +2,11 @@
 
 import { MenuCard } from './MenuCard'; 
 
-export const MenuList = ({ menu }) => { 
+export const MenuList = ({category}) => { 
+    // console.log(category.items)
     return (
         <>
-            {menu.map((item) => ( 
+            {category.items.map((item) => ( 
                 <MenuCard key={item._id} item={item} /> 
             ))} 
         </>
