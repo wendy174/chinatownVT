@@ -1,8 +1,6 @@
 import {
     Card,
-    CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
   } from "@/components/ui/card";
@@ -14,21 +12,14 @@ export const MenuCard = ({item}) => {
     const formattedPrice = price.toFixed(2);
 
     return ( 
-        <div className= 'menu-card'>
-        <ul>
-            {/* <h3>{item.menu_id}.{item.name}</h3> */}
-            {/* <p>{item.descriptions.item}</p> */}
-            
-        </ul>
+    <div className='py-3'>
     <Card>
         <CardHeader>
             <CardTitle>{item.menu_id}. {item.name} {item.isSpicy && <span className="spicy-tag">🌶️</span>}</CardTitle>
             <CardDescription>{item.descriptions.item} </CardDescription>
             <CardDescription>${formattedPrice}+</CardDescription>
-
         </CardHeader>
-
     </Card>
-        </div>
+    </div>
     )
 }
