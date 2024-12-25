@@ -1,7 +1,7 @@
-import { MenuList } from "./MenuList"; 
+import MenuList from "./MenuList"; 
 
 
-export const CategoryList = ({menu}) => { 
+export default function CategoryList({menu}) { 
     return ( 
         <div>
             {menu.map((category) => ( 

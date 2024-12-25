@@ -19,7 +19,7 @@ import {
   
 // Used to display a single menu item 
 
-export const MenuCard = ({item}) => { 
+export default function MenuCard({item}) { 
 
     // Dialog 
     const [menu, setMenu] = useState([]); 
