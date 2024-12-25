@@ -1,8 +1,8 @@
 // iterates thru each menu item and creates their own card 
 
-import { MenuCard } from './MenuCard'; 
+import MenuCard from './MenuCard'; 
 
-export const MenuList = ({ category }) => { 
+export default function MenuList({ category }) { 
     return (
         <div className='py-1'>
             <h2 className="text-2xl font-bold mb-4 text-left">{category._id}</h2>
