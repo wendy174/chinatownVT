@@ -1,5 +1,8 @@
-import { useState } from 'react'; 
+// MenuCard displays a single menu item 
 
+import { useState } from 'react'; 
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import {
     Card,
     CardDescription,
@@ -15,16 +18,15 @@ import {
     DialogTitle,
     DialogTrigger, // Button that opens the dialog 
   } from "@/components/ui/dialog"
-  
-  
-// Used to display a single menu item 
+
 
 export default function MenuCard({item}) { 
 
     // Dialog 
     const [menu, setMenu] = useState([]); 
     const [quantity, setQuantity] = useState(1); 
-    const [instructions, setInstructions] = useState(''); 
+    const [instructions, setInstructions] = useState('');
+ 
 
     // Price 
     const price = item.prices.default || item.prices.small || item.prices.large
@@ -37,7 +39,26 @@ export default function MenuCard({item}) {
     const handleInstructionsChange = (e) => { 
         setInstructions(e.target.value)
     }
- 
+
+    // Conditionally render Small & Large price size  
+
+    const sizeSelection = () => { 
+        if (item.prices.small && item.prices.large !== null) { 
+            return ( 
+                <RadioGroup defaultValue="comfortable">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="default" id="r1" />
+                        <Label htmlFor="r1">Small: ${item.prices.small.toFixed(2)}</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="comfortable" id="r2" />
+                        <Label htmlFor="r2">Large: ${item.prices.large.toFixed(2)}</Label>
+                    </div>
+                </RadioGroup>
+            )
+        }
+    }
+
 
 
     return ( 
@@ -60,6 +81,10 @@ export default function MenuCard({item}) {
                     <DialogTitle>{item.name}</DialogTitle>
                     <DialogDescription>${formattedPrice}</DialogDescription>
                 </DialogHeader>
+
+                    {/* Conditionally render Small & Large price size  */}   
+                    {sizeSelection()}
+
                     {/* Quantity input */}
 
                     <div className="mt-4">
@@ -92,7 +117,7 @@ export default function MenuCard({item}) {
                             onClick={() => alert('Item added!')}
                             className="bg-blue-500 text-white px-4 py-2 rounded w-full"
                             >
-                            Add to Order
+                            Add to Order 
                         </button>
                     </div>
 
