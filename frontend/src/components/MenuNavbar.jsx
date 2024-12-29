@@ -5,7 +5,7 @@ import {
     MenubarTrigger,
 } from "@/components/ui/menubar"
 
-export default function MenuNavbar({ menu }) {
+export default function MenuNavbar({ menu, onCategoryClick }) {
     const scrollRef = useRef(null);
     const [scrolling, setScrolling] = useState(false);
     const [direction, setDirection] = useState(null);
@@ -56,7 +56,7 @@ export default function MenuNavbar({ menu }) {
             >
                 {menu.map((category) => (
                     <MenubarMenu key={category._id}>
-                        <MenubarTrigger className="whitespace-nowrap py-2 px-4">
+                        <MenubarTrigger onClick={() => onCategoryClick(category._id)} className="whitespace-nowrap py-2 px-4">
                             {category._id}
                         </MenubarTrigger>
                     </MenubarMenu>
