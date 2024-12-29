@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect, useRef } from 'react'; 
 // import './App.css'; 
 import CategoryList  from '../components/CategoryList';
 import MenuNavbar from '../components/MenuNavbar'; 
@@ -6,7 +6,8 @@ import MenuNavbar from '../components/MenuNavbar';
 
 export default function MenuPage() {
 
-  const [menu, setMenu] = useState([])
+  const [menu, setMenu] = useState([]); 
+  const sectionRefs = useRef({}); 
 
   useEffect(() => { 
     const fetchMenuItems = async() => { 
@@ -21,12 +22,29 @@ export default function MenuPage() {
     fetchMenuItems(); 
   }, [])
 
+  // Create refs for each category 
+  useEffect(() => {
+    menu.forEach((category) => {
+        // Directly assign to ref object without calling useRef inside the loop
+        if (!sectionRefs.current[category._id]) {
+            sectionRefs.current[category._id] = { current: null };
+        }
+    });
+}, [menu]);
+
+const scrollToSection = (categoryId) => {
+    const section = sectionRefs.current[categoryId];
+    if (section && section.current) {
+        section.current.scrollIntoView({ behavior: 'smooth' });
+    }
+};
+
 
   return (
     <>
      <h1>Chinatown Application</h1>
-     <MenuNavbar menu={menu} />
-     <CategoryList menu={menu} />
+     <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />
+     <CategoryList menu={menu} sectionRefs={sectionRefs} />
     </>
   )
 }
