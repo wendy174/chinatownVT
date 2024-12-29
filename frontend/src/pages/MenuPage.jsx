@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'; 
 // import './App.css'; 
 import CategoryList  from '../components/CategoryList';
+import MenuNavbar from '../components/MenuNavbar'; 
 
 
 export default function MenuPage() {
@@ -24,6 +25,7 @@ export default function MenuPage() {
   return (
     <>
      <h1>Chinatown Application</h1>
+     <MenuNavbar menu={menu} />
      <CategoryList menu={menu} />
     </>
   )
