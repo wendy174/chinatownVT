@@ -2,9 +2,11 @@ import { forwardRef } from 'react';
 import MenuCard from './MenuCard';
 
 const MenuList = forwardRef(({ category }, ref) => {
+    // Ref comes from CategoryList
     const categoryDescription = category.items[0]?.descriptions?.category || "";
 
     return (
+        // MenuList uses forwardRef to attach the ref to outermost div
         <div ref={ref} className='py-1'>  {/* Attach ref to outer div */}
             <h2 className="text-2xl font-bold mb-4 text-left">{category._id}</h2>
             <p className="text-left text-gray-600 mb-4">{categoryDescription}</p>
