@@ -59,10 +59,13 @@ const scrollToSection = (categoryId) => {
 
   return (
     <>
-     <h1>Chinatown Application</h1>
-     <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />
-     <CategoryList menu={menu} sectionRefs={sectionRefs} />
+      <div className="pt-20">  {/* Push content down to avoid overlap */}
+        <h1 className="text-4xl font-bold mb-6">Chinatown Application</h1>
+        <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />
+        <CategoryList menu={menu} sectionRefs={sectionRefs} />
+      </div>
     </>
+
   )
 }
 

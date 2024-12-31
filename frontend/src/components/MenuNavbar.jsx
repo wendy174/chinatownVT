@@ -41,7 +41,8 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
     }, [scrolling, direction]);
 
     return (
-        <div className="relative w-full py-8">
+        <div className="fixed top-0 left-0 w-full bg-white z-50 shadow-md h-1">
+            <div className="relative w-full max-w-screen-lg mx-auto overflow-hidden py-4">
             {/* Left Hover Zone */}
             <div
                 className="absolute left-0 top-0 h-full w-12"
@@ -69,9 +70,10 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
                 onMouseEnter={() => handleScrollStart('right')}
                 onMouseLeave={handleScrollStop}
             />
+            </div>
         </div>
-    )
-}
+    ) 
+} 
 
 
 
