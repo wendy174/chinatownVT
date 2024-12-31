@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'; 
 
 export default function ScrollToTop() { 
-    const [isVisible, setIsVisible] = useState(false); 
-    
+    const [isVisible, setIsVisible] = useState(false); // tracks whether button should appear 
+    // Runs after component mounts 
     useEffect(() => { 
+
+        // Controls visibility of button based on current scroll position 
+        // toggleVisibility checks to see if user has scrolled down to 300px down 
+            // if greater than 300px down make button visible if not make not visible 
         const toggleVisibility = () => { 
+            // scrollY is the number of pixels currently scrolled to 
             if (window.scrollY > 300) { 
                 setIsVisible(true); 
             } else { 
@@ -12,11 +17,19 @@ export default function ScrollToTop() {
             }
         }
 
-        window.addEventListener('scroll', toggleVisibility);
+        // listens to scroll event
+        // when user scrolls, run the toggleVis function that decides if button shows or not 
+        window.addEventListener('scroll', toggleVisibility); 
+
+        // Cleanup --> removes the scroll listener when the componet is removed or updated to prevent memory leaks
+            // without this scroll listener would keep running even after the component disappears 
         return () => window.removeEventListener('scroll', toggleVisibility);
 
     }, []); 
 
+
+
+    // When button is clicked function is triggered 
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
