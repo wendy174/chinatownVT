@@ -1,5 +1,7 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import chinatown_logo from '../assets/chinatown_logo.png';
+
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
@@ -22,7 +24,7 @@ export default function Navbar() {
             <div className="flex-shrink-0">
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                src={chinatown_logo}
                 alt="Your Company"
               />
             </div>
