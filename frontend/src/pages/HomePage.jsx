@@ -1,6 +1,6 @@
 import Welcome from '../components/Welcome'; 
 import Navbar from '../components/Navbar'; 
-import AboutUs from '../components/Aboutus'; 
+import AboutUs from '../components/AboutUs'; 
 
 export default function HomePage() { 
     return ( 
