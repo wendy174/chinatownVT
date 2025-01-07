@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Map, AdvancedMarker } from "@vis.gl/react-google-maps";
+import { Map, AdvancedMarker, InfoWindow } from "@vis.gl/react-google-maps";
 
 export default function CustomMap() {
 
@@ -7,7 +7,7 @@ export default function CustomMap() {
 
     return (
       <div className="flex justify-center items-center ">
-        <div className=" grid grid-cols-1 lg:grid-cols-[1fr,1fr] bg-white items-center bg-opacity-95 shadow-xl rounded-xl max-w-4xl w-full mx-6 lg;mx-12 p-10 lg;p-16">
+        <div className=" grid grid-cols-1 lg:grid-cols-[1fr,1fr] bg-white items-center bg-opacity-95 shadow-xl rounded-xl max-w-5xl w-full mx-6 lg;mx-12 p-10 lg;p-16">
         
         <h2 className="col-span-2 text-3xl font-semibold text-center mb-6 underline underline-offset-4 text-stone-700">
           Contact Us
@@ -25,13 +25,27 @@ export default function CustomMap() {
        
           <div className='flex justify-center items-center '>
             <Map
-                  style={{width: '30vw', height: '30vh'}}
-                  center={markerPosition}
-                  defaultZoom={15}
-                  gestureHandling={'greedy'}
-                  disableDefaultUI={true}
-                  mapId={'DEMO_MAP_ID'}
-            >
+                    style={{width: '30vw', height: '50vh'}}
+                    center={markerPosition}
+                    defaultZoom={15}
+                    gestureHandling={'greedy'}
+                    disableDefaultUI={true}
+                    mapId={'DEMO_MAP_ID'}
+              >
+
+              <InfoWindow position={{lat:44.201583365429315, lng:-72.50557000312092}} >
+                    <div className="p-2">
+                        <p>306 North Main Street</p>
+                        <p>Barre, VT</p>
+                        <a href="https://www.google.com/maps/place/China+Town/@44.2001297,-72.5081449,17z/data=!3m1!4b1!4m6!3m5!1s0x4cb506dc7653546f:0xfe36263aab541e56!8m2!3d44.2001297!4d-72.50557!16s%2Fg%2F1td1jlkn?entry=ttu&g_ep=EgoyMDI1MDEwMi4wIKXMDSoJLDEwMjExMjMzSAFQAw%3D%3D" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="text-blue-500 underline block mt-2">
+                            Get Directions
+                        </a>
+                    </div>
+              </InfoWindow>
+
               <AdvancedMarker position={markerPosition} />
             </Map>
 
