@@ -1,13 +1,12 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { BellIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { BellIcon, UserCircleIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
 import chinatown_logo from '../assets/chinatown_logo.png';
 
 
 const navigation = [
     { name: 'Home', href: '#', current: true },
-    { name: 'Menu', href: '#', current: false },
-    { name: 'Order Online', href: '#', current: false },
-    { name: 'About us', href: '#', current: false },
+    { name: 'Order Online', href: 'menu', current: false },
+    { name: 'About', href: '#', current: false },
     { name: 'Contact', href: '#', current: false }
   ]
 
@@ -18,7 +17,7 @@ function classNames(...classes) {
 export default function Navbar() {
   return (
     <Disclosure as="nav" className="bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl mx-4 mt-4">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"	>
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex items-center">
             <div className="flex-shrink-0">
