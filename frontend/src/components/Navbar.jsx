@@ -4,10 +4,10 @@ import chinatown_logo from '../assets/chinatown_logo.png';
 
 
 const navigation = [
-    { name: 'Home', href: '#', current: true },
+    { name: 'Home', href: '', current: true },
     { name: 'Order Online', href: 'menu', current: false },
-    { name: 'About', href: '#', current: false },
-    { name: 'Contact', href: '#', current: false }
+    { name: 'About', href: '#about', current: false },
+    { name: 'Contact', href: '#contact', current: false }
   ]
 
 function classNames(...classes) {
