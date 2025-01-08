@@ -5,7 +5,7 @@ import MenuPage from './pages/MenuPage';
 import ScrollToTop from './components/ScrollToTop'; 
 import HomePage from './pages/HomePage'; 
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
-import CustomMap from './components/CustomMap'; 
+import CustomMap from './components/Contact'; 
 
 
 function App() {

@@ -6,10 +6,10 @@ export default function CustomMap() {
   const markerPosition = { lat: 44.200368110177195, lng: -72.50553781664827 } 
 
     return (
-      <div className="flex justify-center items-center ">
-        <div className=" grid grid-cols-1 lg:grid-cols-[1fr,1fr] bg-white items-center bg-opacity-95 shadow-xl rounded-xl max-w-5xl w-full mx-6 lg;mx-12 p-10 lg;p-16">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] bg-white items-center bg-opacity-95 shadow-xl rounded-xl w-full p-10 lg:p-16">
         
-        <h2 className="col-span-2 text-3xl font-semibold text-center mb-6 underline underline-offset-4 text-stone-700">
+        <h2 className="col-span-2 text-3xl font-semibold text-center mb-6 text-stone-700">
           Contact Us
         </h2>
           <div className='flex flex-col justify-center items-center text-center lg:items-center space-y-3'>
