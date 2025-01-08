@@ -1,6 +1,6 @@
 export default function AboutUs() { 
     return ( 
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div id="about" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
 
             <div className="bg-white bg-opacity-95 shadow-lg rounded-xl w-full p-10 lg:p-16 mt-">   
 
