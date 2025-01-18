@@ -6,6 +6,7 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage'; 
 import { APIProvider, Map } from "@vis.gl/react-google-maps";
 import CustomMap from './components/Contact'; 
+import ShopContextProvider from './context/shop-context'; 
 
 
 function App() {
@@ -13,18 +14,19 @@ function App() {
 
 
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/menu' element={<MenuPage />} />
-      </Routes>
-      <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
-        <CustomMap />
-      </APIProvider>
-     
-    </Router>
-
+  
+    <ShopContextProvider>
+        <Router>
+            <ScrollToTop />
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route path='/menu' element={<MenuPage />} />
+            </Routes>
+            <APIProvider apiKey={apiKey} onLoad={() => console.log('Maps API has loaded.')}>
+              <CustomMap />
+            </APIProvider>
+        </Router>
+    </ShopContextProvider>
   )
 }
 
