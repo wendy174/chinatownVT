@@ -1,5 +1,5 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { BellIcon, UserCircleIcon, DevicePhoneMobileIcon } from '@heroicons/react/24/outline';
+import { BellIcon, UserCircleIcon, DevicePhoneMobileIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import chinatown_logo from '../assets/chinatown_logo.png';
 
 
@@ -52,8 +52,7 @@ export default function Navbar() {
               type="button"
               className="relative p-1 rounded-full text-gray-400 hover:text-gray-600 focus:ring-2 focus:ring-indigo-500"
             >
-              <span className="sr-only">View notifications</span>
-              <BellIcon className="h-6 w-6" />
+              <ShoppingCartIcon className="h-6 w-6" />
             </button>
 
             <Menu as="div" className="relative ml-3">

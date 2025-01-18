@@ -1,8 +1,10 @@
 // MenuCard displays a single menu item 
 
-import { useState } from 'react'; 
+import { useState, useContext} from 'react'; 
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { ShopContext } from '../context/shop-context'
+
 import {
     Card,
     CardDescription,
@@ -16,7 +18,7 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
-    DialogTrigger, // Button that opens the dialog 
+    DialogTrigger, // Button that opens the dialog/popover
   } from "@/components/ui/dialog"
 
 
@@ -26,6 +28,8 @@ export default function MenuCard({item}) {
     const [menu, setMenu] = useState([]); 
     const [quantity, setQuantity] = useState(1); 
     const [instructions, setInstructions] = useState('');
+
+    const {addToCart} = useContext(ShopContext)
  
 
     // Price 
@@ -114,7 +118,7 @@ export default function MenuCard({item}) {
 
                     <div className="mt-6">
                         <button 
-                            onClick={() => alert('Item added!')}
+                            onClick={() => addToCart(item)}
                             className="bg-blue-500 text-white px-4 py-2 rounded w-full"
                             >
                             Add to Order 
