@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Map, AdvancedMarker, InfoWindow } from "@vis.gl/react-google-maps";
 
-export default function CustomMap() {
+export default function ContactUs() {
 
   const markerPosition = { lat: 44.200368110177195, lng: -72.50553781664827 } 
 
