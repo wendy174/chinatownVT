@@ -29,7 +29,8 @@ export default function MenuCard({item}) {
     const [quantity, setQuantity] = useState(1); 
     const [instructions, setInstructions] = useState('');
 
-    const {addToCart} = useContext(ShopContext)
+    // Global addToCart function
+    const { addToCart } = useContext(ShopContext)
  
 
     // Price 

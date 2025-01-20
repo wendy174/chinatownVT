@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 // import './App.css'; 
 import CategoryList  from '../components/CategoryList';
 import MenuNavbar from '../components/MenuNavbar'; 
+import CartPage from '../pages/CartPage'
 
 // Visual breakdown of category click triggers smooth scrolling to correspoding section 
   // User clicks on category in menubar 
@@ -62,6 +63,7 @@ const scrollToSection = (categoryId) => {
       <div className="pt-20">  {/* Push content down to avoid overlap */}
         <h1 className="text-4xl font-bold mb-6">Chinatown Application</h1>
         <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />
+        <CartPage />
         <CategoryList menu={menu} sectionRefs={sectionRefs} />
       </div>
     </>
