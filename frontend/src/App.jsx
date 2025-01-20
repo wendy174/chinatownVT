@@ -4,6 +4,7 @@ import MenuPage from './pages/MenuPage';
 import ScrollToTop from './components/ScrollToTop'; 
 import HomePage from './pages/HomePage'; 
 import ShopContextProvider from './context/shop-context'; 
+import CartPage from './pages/CartPage'; 
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/menu' element={<MenuPage />} />
+              <Route path='/cart' element={<CartPage />} />
             </Routes>
         </Router>
     </ShopContextProvider>
