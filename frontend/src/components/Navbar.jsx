@@ -1,7 +1,7 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { BellIcon, UserCircleIcon, DevicePhoneMobileIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { UserCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import chinatown_logo from '../assets/chinatown_logo.png';
-
+import { useNavigate } from 'react-router-dom'; 
 
 const navigation = [
     { name: 'Home', href: '', current: true },
@@ -15,6 +15,15 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+
+  const navigate = useNavigate(); 
+
+  const handleCartNavigation = () => { 
+    navigate('/cart'); 
+  }
+
+
+
   return (
     <Disclosure as="nav" className="bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl mx-4 mt-4">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -52,7 +61,7 @@ export default function Navbar() {
               type="button"
               className="relative p-1 rounded-full text-gray-400 hover:text-gray-600 focus:ring-2 focus:ring-indigo-500"
             >
-              <ShoppingCartIcon className="h-6 w-6" />
+              <ShoppingCartIcon className="h-6 w-6" onClick={handleCartNavigation}/>
             </button>
 
             <Menu as="div" className="relative ml-3">
