@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'; 
 // import './App.css'; 
-import CategoryList  from '../components/CategoryList';
-import MenuNavbar from '../components/MenuNavbar'; 
+import CategoryList  from '../components/menu/CategoryList';
+import MenuNavbar from '../components/menu/MenuNavbar'; 
 import CartPage from '../pages/CartPage'
 
 // Visual breakdown of category click triggers smooth scrolling to correspoding section 

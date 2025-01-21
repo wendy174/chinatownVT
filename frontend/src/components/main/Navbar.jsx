@@ -1,6 +1,8 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { UserCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-import chinatown_logo from '../assets/chinatown_logo.png';
+import chinatown_logo from '../../assets/chinatown_logo.png'; 
+
+// import chinatown_logo from '../assets/chinatown_logo.png';
 import { useNavigate } from 'react-router-dom'; 
 
 const navigation = [

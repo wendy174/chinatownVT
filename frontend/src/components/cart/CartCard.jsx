@@ -1,4 +1,4 @@
-import { ShopContext } from '../context/shop-context'
+import { ShopContext } from '../../context/shop-context'
 import { useContext } from 'react'; 
 import {
     Card,

@@ -1,4 +1,4 @@
-import chinatown from '../assets/chinatown.webp';
+import chinatown from '../../assets/chinatown.webp'; 
 
 export default function Welcome() { 
     return ( 

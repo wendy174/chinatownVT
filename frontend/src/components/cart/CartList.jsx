@@ -1,6 +1,6 @@
 import CartCard from './CartCard'; 
 import { useContext} from 'react'; 
-import { ShopContext } from '../context/shop-context'
+import { ShopContext } from '../../context/shop-context'
 
 
 export default function CartList() { 
