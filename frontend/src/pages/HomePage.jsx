@@ -1,8 +1,8 @@
-import Welcome from '../components/Welcome'; 
-import Navbar from '../components/Navbar'; 
-import AboutUs from '../components/AboutUs'; 
+import Welcome from '../components/main/Welcome'; 
+import Navbar from '../components/main/Navbar'; 
+import AboutUs from '../components/main/AboutUs'; 
 import { APIProvider } from "@vis.gl/react-google-maps";
-import ContactUs from '../components/ContactUs'; 
+import ContactUs from '../components/main/ContactUs'; 
 
 export default function HomePage() { 
 

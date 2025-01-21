@@ -3,7 +3,7 @@
 import { useState, useContext} from 'react'; 
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ShopContext } from '../context/shop-context'
+import { ShopContext } from '../../context/shop-context'
 
 import {
     Card,
