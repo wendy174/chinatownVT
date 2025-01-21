@@ -1,26 +1,15 @@
 import { useState, useEffect, useRef } from 'react'; 
-// import './App.css'; 
 import CategoryList  from '../components/menu/CategoryList';
 import MenuNavbar from '../components/menu/MenuNavbar'; 
 import CartPage from '../pages/CartPage'
+import HomeButton from '../components/HomeButton'
 
-// Visual breakdown of category click triggers smooth scrolling to correspoding section 
-  // User clicks on category in menubar 
-  // Triggers scrollToSection 
-  //  sectionRefs.current['appetizers'] points to the MenuList
-  // scrollIntoView
 
 
 export default function MenuPage() {
 
   const [menu, setMenu] = useState([]); 
   const sectionRefs = useRef({}); 
-//   sectionRefs.current = {
-//   appetizers: <div> DOM node,
-//   main: <div> DOM node,
-//   desserts: <div> DOM node
-// }
-// sectionRefs.current[categoryId] fetches the dom elements corresponding to the section 
 
   useEffect(() => { 
     const fetchMenuItems = async() => { 
@@ -48,8 +37,6 @@ export default function MenuPage() {
 
 
 // Uses stored ref to scroll to the corresponding section 
-// Function is passed down to MenuNavbar as onCategoryClick 
-// scrollIntoView is build in dom methods that scrolls the target element into viewpoint 
 const scrollToSection = (categoryId) => {
     const section = sectionRefs.current[categoryId];
     if (section && section.current) {
@@ -61,9 +48,9 @@ const scrollToSection = (categoryId) => {
   return (
     <>
       <div className="pt-20">  {/* Push content down to avoid overlap */}
-        <h1 className="text-4xl font-bold mb-6">Chinatown Application</h1>
+        <h1 className="text-4xl font-bold mb-6">Chinatown Restaurant</h1>
+        <HomeButton />
         <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />
-        <CartPage />
         <CategoryList menu={menu} sectionRefs={sectionRefs} />
       </div>
     </>
