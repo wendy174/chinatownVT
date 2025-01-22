@@ -3,6 +3,7 @@ import { HomeIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import CartIcon from "../CartIcon";
 import UserIcon from "../UserIcon";
+import Navbar from "../Navbar"; 
 
 export default function MenuNavbar({ menu, onCategoryClick }) {
   const scrollRef = useRef(null);
@@ -48,29 +49,8 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
   return (
     <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg">
       {/* Top Section: Home Button, Restaurant Name, and Icons */}
-      <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
-        {/* Left Section: Home Button and Restaurant Name */}
-        <div className="flex items-center space-x-4">
-          {/* Home Button */}
-          <button
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
-            onClick={handleNavHome}
-          >
-            <HomeIcon className="w-6 h-6 text-gray-800" />
-          </button>
-
-          {/* Restaurant Name */}
-          <h2 className="text-lg font-semibold text-gray-800">
-            Chinatown Restaurant
-          </h2>
-        </div>
-
-        {/* Right Section: Cart and User Icons */}
-        <div className="flex items-center space-x-4">
-          <CartIcon className="w-6 h-6 text-gray-800" />
-          <UserIcon className="w-6 h-6 text-gray-800" />
-        </div>
-      </div>
+      <Navbar />
+ 
 
       {/* Bottom Navbar */}
       {/* Scrollable Menu */}

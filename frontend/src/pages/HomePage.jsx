@@ -1,5 +1,5 @@
 import Welcome from '../components/main/Welcome'; 
-import Navbar from '../components/main/Navbar'; 
+import MainPageNavbar from '../components/main/MainPageNavbar'; 
 import AboutUs from '../components/main/AboutUs'; 
 import { APIProvider } from "@vis.gl/react-google-maps";
 import ContactUs from '../components/main/ContactUs'; 
@@ -10,7 +10,7 @@ export default function HomePage() {
 
     return ( 
         <div >
-            <Navbar />
+            <MainPageNavbar />
             <Welcome />
             <AboutUs />
             <APIProvider apiKey={apiKey}>
