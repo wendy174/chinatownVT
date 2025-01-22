@@ -1,8 +1,6 @@
 import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { UserCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 import chinatown_logo from '../../assets/chinatown_logo.png'; 
-
-// import chinatown_logo from '../assets/chinatown_logo.png';
 import { useNavigate } from 'react-router-dom'; 
 
 const navigation = [
@@ -23,8 +21,6 @@ export default function Navbar() {
   const handleCartNavigation = () => { 
     navigate('/cart'); 
   }
-
-
 
   return (
     <Disclosure as="nav" className="bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl mx-4 mt-4">
