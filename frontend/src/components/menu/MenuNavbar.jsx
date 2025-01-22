@@ -1,19 +1,19 @@
 import { useRef, useState, useEffect } from "react";
 import { HomeIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from 'react-router-dom'; 
-import { UserCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
-
+import { useNavigate } from "react-router-dom";
+import CartIcon from "../CartIcon";
+import UserIcon from "../UserIcon";
 
 export default function MenuNavbar({ menu, onCategoryClick }) {
   const scrollRef = useRef(null);
   const [scrolling, setScrolling] = useState(false);
   const [direction, setDirection] = useState(null);
 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const handleNavHome = () => { 
-    navigate('/'); 
-  }
+  const handleNavHome = () => {
+    navigate("/");
+  };
 
   const scroll = (dir) => {
     const scrollAmount = 12; // Faster scrolling
@@ -47,22 +47,32 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
 
   return (
     <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg">
-      {/* Top Section: Home Button and Restaurant Name */}
-      <div className="flex items-center justify-start px-4 py-2 border-b border-gray-200 space-x-4">
-        {/* Home Button */}
-        <button
-          className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
-          onClick={handleNavHome}
-        >
-          <HomeIcon className="w-6 h-6 text-gray-800" />
-        </button>
+      {/* Top Section: Home Button, Restaurant Name, and Icons */}
+      <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+        {/* Left Section: Home Button and Restaurant Name */}
+        <div className="flex items-center space-x-4">
+          {/* Home Button */}
+          <button
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
+            onClick={handleNavHome}
+          >
+            <HomeIcon className="w-6 h-6 text-gray-800" />
+          </button>
 
-        {/* Restaurant Name */}
-        <h2 className="text-lg font-semibold text-gray-800">Chinatown Restaurant</h2>
+          {/* Restaurant Name */}
+          <h2 className="text-lg font-semibold text-gray-800">
+            Chinatown Restaurant
+          </h2>
+        </div>
+
+        {/* Right Section: Cart and User Icons */}
+        <div className="flex items-center space-x-4">
+          <CartIcon className="w-6 h-6 text-gray-800" />
+          <UserIcon className="w-6 h-6 text-gray-800" />
+        </div>
       </div>
 
-        {/* Bottom Navbar */}
-
+      {/* Bottom Navbar */}
       {/* Scrollable Menu */}
       <div className="relative w-full overflow-hidden py-4">
         {/* Left Hover Zone */}
@@ -92,7 +102,7 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
           className="absolute right-0 top-0 h-full w-12"
           onMouseEnter={() => handleScrollStart("right")}
           onMouseLeave={handleScrollStop}
-        /> 
+        />
       </div>
     </div>
   );

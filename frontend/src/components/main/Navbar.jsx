@@ -1,7 +1,7 @@
-import { Disclosure, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { UserCircleIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+import { Disclosure } from '@headlessui/react';
 import chinatown_logo from '../../assets/chinatown_logo.png'; 
-import { useNavigate } from 'react-router-dom'; 
+import UserIcon from '../UserIcon'; 
+import CartIcon from '../CartIcon'; 
 
 const navigation = [
     { name: 'Home', href: '', current: true },
@@ -15,12 +15,6 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-
-  const navigate = useNavigate(); 
-
-  const handleCartNavigation = () => { 
-    navigate('/cart'); 
-  }
 
   return (
     <Disclosure as="nav" className="bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl mx-4 mt-4">
@@ -42,11 +36,11 @@ export default function Navbar() {
                     href={item.href}
                     className={classNames(
                       item.current
-                        ? 'text-indigo-600 border-b-2 border-indigo-500'
-                        : 'text-gray-500 hover:text-gray-700',
-                      'px-3 py-2 text-sm font-medium'
+                        ? "text-indigo-600 border-b-2 border-indigo-500"
+                        : "text-gray-500 hover:text-gray-700",
+                      "px-3 py-2 text-sm font-medium"
                     )}
-                    aria-current={item.current ? 'page' : undefined}
+                    aria-current={item.current ? "page" : undefined}
                   >
                     {item.name}
                   </a>
@@ -55,53 +49,18 @@ export default function Navbar() {
             </div>
           </div>
           <div className="ml-auto flex items-center">
-            <button
-              type="button"
-              className="relative p-1 rounded-full text-gray-400 hover:text-gray-600 focus:ring-2 focus:ring-indigo-500"
-            >
-              <ShoppingCartIcon className="h-6 w-6" onClick={handleCartNavigation}/>
-            </button>
 
-            <Menu as="div" className="relative ml-3">
-              <div>
-                <MenuButton className="flex rounded-full text-sm focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                  <UserCircleIcon className="h-8 w-8 text-gray-500" />
-                </MenuButton>
-              </div>
-              <MenuItems className="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                <MenuItem>
-                  {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm text-gray-700'
-                      )}
-                    >
-                      Your Profile
-                    </a>
-                  )}
-                </MenuItem>
-                <MenuItem>
-                  {({ active }) => (
-                    <a
-                      href="#"
-                      className={classNames(
-                        active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm text-gray-700'
-                      )}
-                    >
-                      Sign out
-                    </a>
-                  )}
-                </MenuItem>
-              </MenuItems>
-            </Menu>
+            {/* Reusable Cart Icon */}
+            <CartIcon />
+
+            {/* Reusable User Menu */}
+            <UserIcon
+       
+            />
           </div>
         </div>
       </div>
     </Disclosure>
   );
 }
-
   
