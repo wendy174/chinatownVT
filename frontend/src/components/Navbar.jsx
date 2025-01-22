@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import { HomeIcon } from "@heroicons/react/24/outline";
-import { useNavigate } from "react-router-dom";
+import { HomeIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
+import { useNavigate, useLocation } from "react-router-dom";
 import CartIcon from "../components/CartIcon"; 
 import UserIcon from "../components/UserIcon"; 
 
@@ -12,10 +12,17 @@ export default function Navbar() {
   const [direction, setDirection] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation(); 
 
   const handleNavHome = () => {
     navigate("/");
   };
+
+  const handleBackToOrdering = () => { 
+    navigate('/menu'); 
+  }
+
+  const showBackToOrderingButton = location.pathname === '/cart'; 
 
 
   const scroll = (dir) => {
@@ -54,6 +61,16 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
         {/* Left Section: Home Button and Restaurant Name */}
         <div className="flex items-center space-x-4">
+          {/* Conditionally Render Back Button if on Cart Page */}
+            {showBackToOrderingButton && ( 
+              <button
+              className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
+              onClick={handleBackToOrdering}
+              >
+              <ArrowLeftIcon className="w-6 h-6 text-gray-800" />
+              </button>
+            )}
+
           {/* Home Button */}
           <button
             className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
@@ -68,11 +85,13 @@ export default function Navbar() {
           </h2>
         </div>
 
-        {/* Right Section: Cart and User Icons */}
+        {/* Right Section: Cart and User Icons */} 
         <div className="flex items-center space-x-4">
           <CartIcon className="w-6 h-6 text-gray-800" />
           <UserIcon className="w-6 h-6 text-gray-800" />
         </div>
+
+
       </div>
     </div>
 
