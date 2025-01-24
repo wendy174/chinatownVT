@@ -13,7 +13,17 @@ export default function ShopContextProvider(props) {
         setCartItems((prevCart) => [...prevCart, item])
     }
 
-    const contextValue = { cartItems, addToCart }
+    // Update cart id quantity 
+    const updateCartItemQuantity = (id, newQuantity) => {
+        setCartItems((prevCart) =>
+            prevCart.map((item) =>
+            item._id === id ? { ...item, quantity: newQuantity } : item
+            )
+        );
+    };
+        
+
+    const contextValue = { cartItems, addToCart, updateCartItemQuantity }
 
    return ( 
     <ShopContext.Provider value={contextValue}>
