@@ -24,7 +24,7 @@ export default function MenuCard({ item }) {
     const [instructions, setInstructions] = useState('');
     const [selectedSize, setSelectedSize] = useState('default'); // Default size selection
 
-    const { addToCart } = useContext(ShopContext);
+    const { addToCart, cartItems } = useContext(ShopContext);
 
     const handleQuantityChange = (e) => { 
         setQuantity(e.target.value);
@@ -37,6 +37,10 @@ export default function MenuCard({ item }) {
     const handleSizeChange = (value) => {
         setSelectedSize(value);
     };
+
+    // Highlights menuCard if item is in cart
+    const isItemInCart = cartItems.some((cartItem) => cartItem._id === item._id);
+
 
     const sizeSelection = () => { 
         if (item.prices.small && item.prices.large !== null) { 
@@ -78,7 +82,14 @@ export default function MenuCard({ item }) {
         <div className='py-3'>
             <Dialog>
                 <DialogTrigger asChild>
-                    <Card>
+                    <Card
+                             className={`${
+                                isItemInCart
+                                  ? "bg-red-300 border-black" // Highlight for items in cart
+                                  : "bg-white" // Default appearance
+                              } border transition-all duration-200`}
+                    
+                    >
                         <CardHeader>
                             <CardTitle>{item.menu_id}. {item.name} {item.isSpicy && <span className="spicy-tag">🌶️</span>}</CardTitle>
                             <CardDescription>{item.descriptions.item}</CardDescription>
