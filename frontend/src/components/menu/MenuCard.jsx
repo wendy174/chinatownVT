@@ -40,6 +40,11 @@ export default function MenuCard({ item }) {
 
     // Highlights menuCard if item is in cart
     const isItemInCart = cartItems.some((cartItem) => cartItem._id === item._id);
+    
+    // Find item in cart and get its quantity 
+    // .find searches for object where _id matches with the current item.id
+    const cartItem = cartItems.find((cartItem) => cartItem._id === item._id); 
+    const itemQuantityInCart = cartItem ? cartItem.quantity : 0; 
 
 
     const sizeSelection = () => { 
@@ -82,6 +87,14 @@ export default function MenuCard({ item }) {
         <div className='py-3'>
             <Dialog>
                 <DialogTrigger asChild>
+                <div className="relative">
+            {/* Quantity Badge - Only show if item is in cart */}
+            {itemQuantityInCart > 0 && ( 
+                 <span className="absolute top-2 right-2 inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset shadow-md">
+                 {itemQuantityInCart}
+                 </span>
+            )}
+     
                     <Card
                              className={`${
                                 isItemInCart
@@ -90,12 +103,16 @@ export default function MenuCard({ item }) {
                               } border transition-all duration-200`}
                     
                     >
-                        <CardHeader>
+                        <CardHeader
+                        >
                             <CardTitle>{item.menu_id}. {item.name} {item.isSpicy && <span className="spicy-tag">🌶️</span>}</CardTitle>
+
                             <CardDescription>{item.descriptions.item}</CardDescription>
                             <CardDescription>${item.prices.default || item.prices.small || item.prices.large}+</CardDescription>
                         </CardHeader>
                     </Card>
+                </div>
+
                 </DialogTrigger>
 
                 <DialogContent>
