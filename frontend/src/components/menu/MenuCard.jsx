@@ -118,7 +118,7 @@ export default function MenuCard({ item }) {
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{item.name}</DialogTitle>
-                        <DialogDescription>${item.prices.default}</DialogDescription>
+                        <DialogDescription>{item.prices.default}</DialogDescription>
                     </DialogHeader>
 
                     {sizeSelection()}

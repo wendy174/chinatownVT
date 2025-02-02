@@ -10,8 +10,21 @@ export default function ShopContextProvider(props) {
     // Use functional form to ensure your getting most current state 
         // multiple batch updates in quick succession might lead the function to use an old state because react batch state updates 
     function addToCart(item) {
-        setCartItems((prevCart) => [...prevCart, item])
-    }
+
+        setCartItems((prevCart) => { 
+            const isItemInCart = prevCart.some((cartItem) => cartItem._id === item._id) 
+    
+            if (isItemInCart) { 
+                return prevCart.map((cartItem) => 
+                cartItem._id === item._id 
+                    ? {...cartItem, quantity: cartItem.quantity + 1 }
+                    : cartItem
+                )
+            } else { 
+                return [...prevCart, { ...item, quantity: 1 }]
+            }
+        })
+    } 
 
     // Update cart id quantity 
     const updateCartItemQuantity = (id, newQuantity) => {
