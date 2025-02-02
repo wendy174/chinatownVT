@@ -6,6 +6,7 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card";
+import CartList from './CartList';
 
 
   export default function CartCard({ item }) {
@@ -31,6 +32,16 @@ import {
                 {item.name} ({item.selectedSize}){" "}
                 {item.isSpicy && <span className="spicy-tag">🌶️</span>}
               </CardTitle>
+              
+              {/* Instructions */}
+              {/* If instructions exsists and there are spaces it renders */}
+              {/* If first line statement is true then render <CardDescription>} */}
+
+              {item.instructions && item.instructions.trim() !== "" && (
+              <CardDescription className="italic">Notes: {item.instructions}</CardDescription>
+            )}
+ 
+
               <CardDescription>${formattedPrice}</CardDescription>
             </div>
     
