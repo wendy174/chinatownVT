@@ -46,6 +46,10 @@ export default function MenuCard({ item }) {
     const cartItem = cartItems.find((cartItem) => cartItem._id === item._id); 
     const itemQuantityInCart = cartItem ? cartItem.quantity : 0; 
 
+    // console.log(item.prices.default)
+    // console.log(item.prices.default.toFixed(2)) 
+
+
 
     const sizeSelection = () => { 
         if (item.prices.small && item.prices.large !== null) { 
@@ -61,6 +65,11 @@ export default function MenuCard({ item }) {
                     </div>
                 </RadioGroup>
             );
+        } else { 
+            return ( 
+                <DialogDescription>${item.prices.default.toFixed(2)}</DialogDescription>
+
+            )
         }
     };
 
@@ -88,6 +97,7 @@ export default function MenuCard({ item }) {
             <Dialog>
                 <DialogTrigger asChild>
                 <div className="relative">
+
             {/* Quantity Badge - Only show if item is in cart */}
             {itemQuantityInCart > 0 && ( 
                  <span className="absolute top-2 right-2 inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 ring-1 ring-yellow-600/20 ring-inset shadow-md">
@@ -108,7 +118,9 @@ export default function MenuCard({ item }) {
                             <CardTitle>{item.menu_id}. {item.name} {item.isSpicy && <span className="spicy-tag">🌶️</span>}</CardTitle>
 
                             <CardDescription>{item.descriptions.item}</CardDescription>
-                            <CardDescription>${item.prices.default || item.prices.small || item.prices.large}+</CardDescription>
+                            <CardDescription>
+                                ${item.prices.default != null ? `${item.prices.default.toFixed(2)}` : `${item.prices.small.toFixed(2)}`}+
+                            </CardDescription>
                         </CardHeader>
                     </Card>
                 </div>
@@ -118,7 +130,6 @@ export default function MenuCard({ item }) {
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{item.name}</DialogTitle>
-                        <DialogDescription>{item.prices.default}</DialogDescription>
                     </DialogHeader>
 
                     {sizeSelection()}
