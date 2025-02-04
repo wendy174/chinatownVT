@@ -46,13 +46,8 @@ export default function MenuCard({ item }) {
     const cartItem = cartItems.find((cartItem) => cartItem._id === item._id); 
     const itemQuantityInCart = cartItem ? cartItem.quantity : 0; 
 
-    // console.log(item.prices.default)
-    // console.log(item.prices.default.toFixed(2)) 
-
-
-
     const sizeSelection = () => { 
-        if (item.prices.small && item.prices.large !== null) { 
+        if (item.prices.small != null && item.prices.large != null) { 
             return ( 
                 <RadioGroup value={selectedSize} onValueChange={handleSizeChange}>
                     <div className="flex items-center space-x-2">
