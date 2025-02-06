@@ -174,7 +174,7 @@ export default function MenuCard({ item }) {
                             onClick={handleAddToCart}
                             className="bg-blue-500 text-white px-4 py-2 rounded w-full"
                         >
-                            Add to Order 
+                            Add ({quantity}) to Order 
                         </button>
                     </div>
                 </DialogContent>
