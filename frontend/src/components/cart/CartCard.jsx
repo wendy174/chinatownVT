@@ -20,6 +20,7 @@ import CartList from './CartList';
     }
 
     const decrementQuantity = () => { 
+      if (item.quantity > 1) // Prevents neg quantities 
         updateCartItemQuantity(item._id, item.quantity - 1)
     }
 
