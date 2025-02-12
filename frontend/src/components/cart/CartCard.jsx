@@ -6,7 +6,6 @@ import {
     CardHeader,
     CardTitle,
   } from "@/components/ui/card";
-import CartList from './CartList';
 
 
   export default function CartCard({ item }) {

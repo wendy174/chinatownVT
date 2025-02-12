@@ -1,10 +1,6 @@
 import { useRef, useState, useEffect } from "react";
-import { HomeIcon } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
-import CartIcon from "../CartIcon";
-import UserIcon from "../UserIcon";
 import Navbar from "../Navbar"; 
-import SearchBar from "../SearchBar"; 
 
 export default function MenuNavbar({ menu, onCategoryClick }) {
   const scrollRef = useRef(null);
@@ -12,10 +8,6 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
   const [direction, setDirection] = useState(null);
 
   const navigate = useNavigate();
-
-  const handleNavHome = () => {
-    navigate("/");
-  };
 
   const scroll = (dir) => {
     const scrollAmount = 12; // Faster scrolling
@@ -51,7 +43,6 @@ export default function MenuNavbar({ menu, onCategoryClick }) {
     <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg">
       {/* Top Section: Home Button, Restaurant Name, and Icons */}
       <Navbar />
- 
 
       {/* Bottom Navbar */}
       {/* Scrollable Menu */}
