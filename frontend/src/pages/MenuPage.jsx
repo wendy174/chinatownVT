@@ -1,12 +1,18 @@
-import { useState, useEffect, useRef } from 'react'; 
+import { useState, useEffect, useRef, useContext } from 'react'; 
 import CategoryList from '../components/menu/CategoryList';
 import MenuNavbar from '../components/menu/MenuNavbar'; 
-import HomeButton from '../components/HomeButton';
+import { SearchMenuContext } from '../context/searchMenu-context'; 
 
 export default function MenuPage() {
+
   const [menu, setMenu] = useState([]); 
+
   const sectionRefs = useRef({}); 
 
+  const { searchInput } = useContext(SearchMenuContext); 
+
+
+  // Fetch menu items 
   useEffect(() => { 
     const fetchMenuItems = async () => { 
       try { 
@@ -37,6 +43,29 @@ export default function MenuPage() {
     }
   };
 
+  // Filter search 
+    let filterMenu2 = [];
+    if(searchInput.length > 0) { // If search input
+      menu.map((aCategory) => { // Iterate over category 
+
+        // Iterate over each item in the category 
+        const filterItems = aCategory.items.filter((anItem) => anItem.name.toLowerCase().includes(searchInput));
+
+        console.log(`filterItems` + {filterItems})
+
+        if(filterItems.length > 0) {
+          filterMenu2.push({
+            '_id': aCategory['_id'],
+            items: filterItems
+          })
+        }
+      });
+    } else {
+      filterMenu2 = menu;
+    }
+    
+  const filteredMenu =  filterMenu2; 
+
   return (
     <div>
       {/* Centered MenuNavbar */}
@@ -45,7 +74,7 @@ export default function MenuPage() {
       </div>
 
       {/* Category List */}
-      <CategoryList menu={menu} sectionRefs={sectionRefs} />
+      <CategoryList menu={filteredMenu} sectionRefs={sectionRefs} />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { HomeIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate, useLocation } from "react-router-dom";
 import CartIcon from "../components/CartIcon"; 
 import UserIcon from "../components/UserIcon"; 
-
+import SearchBar from "../components/SearchBar"
 
 export default function Navbar() {
 
@@ -22,7 +22,11 @@ export default function Navbar() {
     navigate('/menu'); 
   }
 
+  // Back to Menu Button only display in '/cart'; 
   const showBackToOrderingButton = location.pathname === '/cart'; 
+
+  // Search bar only displays in '/menu' route; 
+  const showSearchBarOnMenuPage = location.pathname === '/menu'; 
 
 
   const scroll = (dir) => {
@@ -87,6 +91,9 @@ export default function Navbar() {
 
         {/* Right Section: Cart and User Icons */} 
         <div className="flex items-center space-x-4">
+          {showSearchBarOnMenuPage && 
+          <SearchBar />
+          }
           <CartIcon className="w-6 h-6 text-gray-800" />
           <UserIcon className="w-6 h-6 text-gray-800" />
         </div>
