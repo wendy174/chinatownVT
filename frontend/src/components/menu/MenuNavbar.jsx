@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CartIcon from "../CartIcon";
 import UserIcon from "../UserIcon";
 import Navbar from "../Navbar"; 
+import SearchBar from "../SearchBar"; 
 
 export default function MenuNavbar({ menu, onCategoryClick }) {
   const scrollRef = useRef(null);

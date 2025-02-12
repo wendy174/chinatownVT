@@ -5,11 +5,12 @@ import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/HomePage'; 
 import ShopContextProvider from './context/shop-context'; 
 import CartPage from './pages/CartPage'; 
-
+import SearchMenuContextProvider from './context/searchMenu-context'; 
 
 function App() {
 
   return (
+    <SearchMenuContextProvider>
     <ShopContextProvider>
         <Router>
             <ScrollToTop />
@@ -20,6 +21,8 @@ function App() {
             </Routes>
         </Router>
     </ShopContextProvider>
+    </SearchMenuContextProvider>
+
   )
 }
 
