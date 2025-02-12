@@ -23,7 +23,7 @@ export default function MenuCard({ item }) {
     const [instructions, setInstructions] = useState('');
     const [selectedSize, setSelectedSize] = useState('default'); // Default size selection
 
-    const { addToCart, cartItems, updateCartItemQuantity } = useContext(ShopContext);
+    const { addToCart, cartItems } = useContext(ShopContext);
 
   
     // ✅ Initialize quantity from cartItems if available, otherwise default to 1
@@ -31,7 +31,7 @@ export default function MenuCard({ item }) {
     const [quantity, setQuantity] = useState(1) 
 
     useEffect(() => { 
-        setQuantity(1); // reset to 1 when dialog opens 
+        setQuantity(1); // Reset to 1 when dialog opens 
     }, [item._id])
 
     
@@ -85,7 +85,7 @@ export default function MenuCard({ item }) {
             ? item.prices.small
             : selectedSize === 'large'
                 ? item.prices.large
-                : item.prices.default; // if both conditions are false selectedPrice is default 
+                : item.prices.default; // If both conditions are false selectedPrice is default 
 
 
         // Does not mutate original item in db 
