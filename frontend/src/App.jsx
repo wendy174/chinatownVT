@@ -7,6 +7,7 @@ import ShopContextProvider from './context/shop-context';
 import CartPage from './pages/CartPage'; 
 import SearchMenuContextProvider from './context/searchMenu-context'; 
 
+
 function App() {
 
   return (
