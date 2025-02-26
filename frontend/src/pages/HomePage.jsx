@@ -3,7 +3,6 @@ import MainPageNavbar from '../components/main/MainPageNavbar';
 import AboutUs from '../components/main/AboutUs'; 
 import { APIProvider } from "@vis.gl/react-google-maps";
 import ContactUs from '../components/main/ContactUs'; 
-import Login from '../components/Login'; 
 
 export default function HomePage() { 
 
@@ -11,7 +10,6 @@ export default function HomePage() {
 
     return ( 
         <div >
-            <Login />
             <MainPageNavbar />
             <Welcome />
             <AboutUs />
