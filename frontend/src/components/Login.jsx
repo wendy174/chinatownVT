@@ -2,13 +2,13 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-reac
 
 export default function Login() { 
     return (
-        <header>
+        <div>
             <SignedOut>
                 <SignInButton />
             </SignedOut>
             <SignedIn>
                 <UserButton />
             </SignedIn>
-        </header>
+        </div>
     )
 }

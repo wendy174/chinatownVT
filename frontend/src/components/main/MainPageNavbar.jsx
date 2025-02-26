@@ -1,7 +1,7 @@
 import { Disclosure } from '@headlessui/react';
 import chinatown_logo from '../../assets/chinatown_logo.png'; 
-import UserIcon from '../UserIcon'; 
-import CartIcon from '../CartIcon'; 
+import CartIcon from '../CartIcon';
+import Login from '../Login'; 
 
 const navigation = [
     { name: 'Home', href: '', current: true },
@@ -48,15 +48,9 @@ export default function MainPageNavbar() {
               </div>
             </div>
           </div>
-          <div className="ml-auto flex items-center">
-
-            {/* Reusable Cart Icon */}
+          <div className="ml-auto flex items-center space-x-4">
             <CartIcon />
-
-            {/* Reusable User Menu */}
-            <UserIcon
-       
-            />
+            <Login />
           </div>
         </div>
       </div>

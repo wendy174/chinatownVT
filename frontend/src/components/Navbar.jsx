@@ -2,8 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import { HomeIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 import { useNavigate, useLocation } from "react-router-dom";
 import CartIcon from "../components/CartIcon"; 
-import UserIcon from "../components/UserIcon"; 
-import SearchBar from "../components/SearchBar"
+import SearchBar from "../components/SearchBar"; 
+import Login from "../components/Login"; 
 
 export default function Navbar() {
 
@@ -27,7 +27,6 @@ export default function Navbar() {
 
   // Search bar only displays in '/menu' route; 
   const showSearchBarOnMenuPage = location.pathname === '/menu'; 
-
 
   const scroll = (dir) => {
     const scrollAmount = 12; // Faster scrolling
@@ -95,9 +94,8 @@ export default function Navbar() {
           <SearchBar />
           }
           <CartIcon className="w-6 h-6 text-gray-800" />
-          <UserIcon className="w-6 h-6 text-gray-800" />
+          <Login />
         </div>
-
 
       </div>
     </div>
