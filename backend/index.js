@@ -6,6 +6,12 @@ const express = require('express');
 const app = express(); 
 const cors = require('cors'); 
 
+const { clerkMiddleware, getAuth }  = require("@clerk/express")
+const { requireAuth } = require("@clerk/express")
+
+app.use(clerkMiddleware())
+
+
 // Creates instance of express app. 
 
 // dotenv loads env. var --> used to keep db uri secure 
