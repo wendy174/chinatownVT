@@ -67,7 +67,7 @@ export default function MenuPage() {
   const filteredMenu =  filterMenu2; 
 
   return (
-    <div>
+    <div >
       {/* Centered MenuNavbar */}
       <div className="flex justify-center mb-4">
         <MenuNavbar menu={menu} onCategoryClick={scrollToSection} />

@@ -8,9 +8,9 @@ export default function CartPage() {
       <Navbar />
 
       {/* Page Content */}
-      <div className="w-full max-w-5xl px-4 py-6">
-        <h1 className="text-3xl font-semibold text-stone-700 mb-6">
-          Shopping Cart
+      <div className="w-full max-w-5xl bg-white shadow-lg rounded-lg py-8 mt-6 px-5 ">
+        <h1 className="text-2xl font-bold text-left">
+          Cart
         </h1>
         <CartList />
       </div>

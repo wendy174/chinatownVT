@@ -42,7 +42,7 @@ import {
             )}
  
 
-              <CardDescription>${formattedPrice}</CardDescription>
+              <CardDescription className="text-center">${formattedPrice}</CardDescription>
             </div>
     
             {/* Right Content: Quantity Incrementer */}
