@@ -7,7 +7,7 @@ const MenuList = forwardRef(({ category }, ref) => {
 
     return (
         // MenuList uses forwardRef to attach the ref to outermost div
-        <div ref={ref} className='py-1 max-w-screen-lg mx-auto pt-18'>
+        <div ref={ref} className='py-6 max-w-screen-lg mx-auto pt-18 bg-white shadow-lg rounded-lg px-5 mb-8'>
             <h2 className="text-2xl font-bold mb-4 text-left">{category._id}</h2>
             <p className="text-left text-gray-600 mb-4">{categoryDescription}</p>
 
