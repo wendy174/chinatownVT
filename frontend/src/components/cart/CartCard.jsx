@@ -23,13 +23,20 @@ import {
         updateCartItemQuantity(item._id, item.quantity - 1)
     }
 
+    // Shows size if small or large, but not when default/one-size
+    const showItemSize = () => { 
+      if (item.prices.small != null && item.prices.large != null) { 
+        return `(${item.selectedSize})`
+      }
+    }
+
     return (
         <Card className="m-4">
           <CardHeader className="flex items-center justify-between p-4">
             {/* Left Content: Item Details */}
             <div>
               <CardTitle className="text-base font-semibold">
-                {item.name} ({item.selectedSize}){" "}
+                {item.name} {showItemSize()}
                 {item.isSpicy && <span className="spicy-tag">🌶️</span>}
               </CardTitle>
               
