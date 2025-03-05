@@ -1,5 +1,6 @@
 import CartList from "../components/cart/CartList";
 import Navbar from "../components/Navbar";
+import CartTotalCost from "../components/cart/CartTotalCost"; 
 
 export default function CartPage() {
   return (
@@ -13,7 +14,12 @@ export default function CartPage() {
           Cart
         </h1>
         <CartList />
+
+        <CartTotalCost />
+
+   
       </div>
+
     </div>
   );
 }
