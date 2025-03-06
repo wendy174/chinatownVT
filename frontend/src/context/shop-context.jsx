@@ -30,7 +30,7 @@ export default function ShopContextProvider(props) {
     };
         
 
-    const contextValue = { cartItems, addToCart, updateCartItemQuantity }
+    const contextValue = { cartItems, setCartItems, addToCart, updateCartItemQuantity }
 
    return ( 
     <ShopContext.Provider value={contextValue}>

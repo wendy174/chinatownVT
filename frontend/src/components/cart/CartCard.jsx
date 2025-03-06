@@ -1,5 +1,6 @@
 import { ShopContext } from '../../context/shop-context'
 import { useContext } from 'react'; 
+import { Button } from "@/components/ui/button"; 
 import {
     Card,
     CardDescription,
@@ -12,7 +13,7 @@ import {
 
     const formattedPrice = item.selectedPrice.toFixed(2); 
 
-    const { updateCartItemQuantity } = useContext(ShopContext); 
+    const { updateCartItemQuantity, cartItems, setCartItems } = useContext(ShopContext); 
 
     const incrementQuantity = () => { 
         updateCartItemQuantity(item._id, item.quantity + 1 )
@@ -30,10 +31,17 @@ import {
       }
     }
 
+    const removeItemFromCart = (id) => { 
+      setCartItems(cartItems.filter(singleItem => singleItem._id !== id))
+    }
+
     return (
         <Card className="m-4">
+          <Button variant="ghost" onClick={() => removeItemFromCart(item._id)}>Remove</Button>
+
           <CardHeader className="flex items-center justify-between p-4">
             {/* Left Content: Item Details */}
+
             <div>
               <CardTitle className="text-base font-semibold">
                 {item.name} {showItemSize()}
