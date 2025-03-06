@@ -8,13 +8,14 @@ import { useContext } from 'react';
 
 export default function CartPage() {
 
-  const { setCartItems } = useContext(ShopContext); 
+  const { cartItems, setCartItems } = useContext(ShopContext); 
 
   const handleClearCart = () => { 
     setCartItems([])
   }
 
   return (
+
     <div className="flex flex-col items-center">
       {/* Navbar */}
       <Navbar />
@@ -29,11 +30,13 @@ export default function CartPage() {
           <Button variant="secondary" onClick={() => handleClearCart()}>Clear Cart</Button>
         </div>
   
-
         <CartList />
-        <CartTotalCost />
 
-   
+        {/* Conditionally renders prices there are items in the cart */}
+        { cartItems.length > 0 && ( 
+            <CartTotalCost />
+        )}
+
       </div>
 
     </div>
