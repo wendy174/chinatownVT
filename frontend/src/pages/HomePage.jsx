@@ -3,6 +3,7 @@ import MainPageNavbar from '../components/main/MainPageNavbar';
 import AboutUs from '../components/main/AboutUs'; 
 import { APIProvider } from "@vis.gl/react-google-maps";
 import ContactUs from '../components/main/ContactUs'; 
+import FoodCarousel from '../components/main/FoodCarousel'; 
 
 export default function HomePage() { 
 
@@ -12,6 +13,7 @@ export default function HomePage() {
         <div >
             <MainPageNavbar />
             <Welcome />
+            <FoodCarousel />
             <AboutUs />
             <APIProvider apiKey={apiKey}>
               <ContactUs />

@@ -6,7 +6,7 @@ export default function ContactUs() {
   const markerPosition = { lat: 44.200368110177195, lng: -72.50553781664827 } 
 
     return (
-      <div id="contact" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div id="contact" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr,1fr] bg-white items-center bg-opacity-95 shadow-xl rounded-xl w-full p-10 lg:p-16">
         
         <h2 className="col-span-2 text-3xl font-semibold text-center mb-6 text-stone-700">
