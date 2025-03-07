@@ -6,6 +6,7 @@ import Login from '../Login';
 const navigation = [
     { name: 'Home', href: '', current: true },
     { name: 'Order Online', href: 'menu', current: false },
+    { name: 'Food Gallery', href: '#foodgallery', current: false },
     { name: 'About', href: '#about', current: false },
     { name: 'Contact', href: '#contact', current: false }
   ]
