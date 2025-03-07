@@ -2,7 +2,7 @@ import chinatown from '../../assets/chinatown.webp';
 
 export default function Welcome() { 
     return ( 
-        <div id="welcome" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mt-12">
+        <div id="welcome" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
             <div className='grid grid-cols-1 lg:grid-cols-2 items-center bg-white bg-opacity-95 shadow-xl rounded-xl w-full p-10 lg:p-16'>
                 <div className='flex justify-center lg:justify-start'>
                     <img 

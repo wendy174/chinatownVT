@@ -1,10 +1,10 @@
 export default function AboutUs() { 
     return ( 
-        <div id="about" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div id="about" className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 m-8">
 
-            <div className="bg-white bg-opacity-95 shadow-lg rounded-xl w-full p-10 lg:p-16 mt-">   
+            <div className="bg-white bg-opacity-95 shadow-lg rounded-xl w-full p-10 lg:p-16">   
 
-                <h1 className="text-3xl font-semibold text-stone-700 mb-6">
+                <h1 className="text-3xl font-semibold text-stone-700 mb-6 text-center">
                     About Us
                 </h1>
                 <h2 className="text-xl text-gray-700 leading-relaxed mb-6">
