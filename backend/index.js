@@ -1,10 +1,13 @@
 // index.js is the main entry point for express server 
+    // index.js replaces server.js/app.js 
 // here express connects to mongodb altas cluster 
 
 const mongoose = require('mongoose'); 
 const express = require('express'); 
 const app = express(); 
 const cors = require('cors'); 
+
+const cartRoutes = require('./routes/cartRoutes')
 
 const { clerkMiddleware, getAuth }  = require("@clerk/express")
 const { requireAuth } = require("@clerk/express")
@@ -25,7 +28,6 @@ const mongoURI = process.env.ATLAS_URI;
 const MenuItem = require('./models/MenuItem'); 
 
 // Middleware to parse JSON 
-app.use(express.json());
 
 // Start the server. 
 const PORT = 3000;
@@ -39,9 +41,23 @@ mongoose.connect(mongoURI)
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // cors 
-app.use(cors({ origin: 'http://localhost:5173' }));
+
+app.use(cors({
+    origin: "http://localhost:5173",  // ✅ Allow frontend access
+    credentials: true,  // ✅ Allow cookies/session tokens to be sent
+    methods: ["GET", "POST", "DELETE"],  // ✅ Allow required methods
+    allowedHeaders: ["Content-Type", "Authorization"]  // ✅ Allow necessary headers
+}));
+
+
+
+app.use(express.json());
+
 
 const categoryOrder = ["Appetizers", "Soup", "Egg Foo Young", "Lo Mein", "Chop Suey", "Fried Rice", "Chow Mein", "Vegetables", "Sweet & Sour", "Poultry", "Pork", "Beef", "Seafood", "House Specialties", "Special Diet Menu", "Combination Plates", "Lunch" ]
+
+app.use('/cart', cartRoutes); // Use cart routes
+
 
 
 // ensures options are right next to each other ex c3 & c3a
@@ -115,94 +131,6 @@ app.get('/menu', async (req, res) => {
 
 
 
-// Menu sorted by category in certain order 
-
-// returns menu sorted by category
-// app.get('/menu', async (req, res) => {
-//   try {
-//     let menuItems = await mongoose.connection.db
-//       .collection('menuItems')
-//       .aggregate([
-//         {
-//           $group: {
-//             _id: "$category",
-//             items: { $push: "$$ROOT" }
-//           }
-//         }
-//       ])
-//       .toArray();
-
-//     // Custom sort by predefined array
-//     menuItems.sort((a, b) => {
-//       return categoryOrder.indexOf(a._id) - categoryOrder.indexOf(b._id);
-//     });
-
-//     res.status(200).json(menuItems);
-//   } catch (error) {
-//     console.error('Aggregation Error:', error);
-//     res.status(500).send('Error fetching menu items');
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.get('/menu', async (req, res) => {
-//   try {
-//     const menuItems = await mongoose.connection.db
-//       .collection('menuItems')  // Directly access the menuItems collection
-//       .aggregate([
-//         {
-//           $group: {
-//             _id: "$category",  // Group by category
-//             items: { $push: "$$ROOT" }  // Push full documents into 'items' array
-//           }
-//         },
-//         {
-//           $sort: { _id: 1 }  // Sort alphabetically by category
-//         }
-//       ])
-//       .toArray();  // Convert aggregation results to an array
-
-//     res.status(200).json(menuItems);  // Send response as JSON
-//   } catch (error) {
-//     console.error('Aggregation Error:', error);
-//     res.status(500).send('Error fetching menu items');
-//   }
-// });
-
-// Get all menu items 
-// app.get('/menu', async (req, res) => { 
-//   try { 
-//     const menuItems = await MenuItem.find(); 
-//     res.status(200).send(menuItems); 
-//   } catch (err) { 
-//     res.status(500).send(err.message)
-//   }
-// })
-
-
-// Get all "Lunch"
-// app.get('/lunch', async (req, res) => { 
-//   try { 
-//     const menuItems = await MenuItem.find({category: "Lunch"}); 
-//     res.status(200).send(menuItems); 
-//   } catch (err) { 
-//     res.status(500).send(err.message)
-//   }
-// }); 
 
 
 

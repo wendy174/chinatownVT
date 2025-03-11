@@ -1,11 +1,6 @@
-// Define schema and model 
-// A Mongoose schema ensures that every document in a collection follows the specified structure and validates the data before saving it.
-// Without a schema: You might accidentally save a menu item without a name or with incorrect types for fields.
-// With a schema: Mongoose enforces that name is required and must be a string.
-
+// models help you define schema of your table 
 
 const mongoose = require('mongoose');
-
 
 const menuItemSchema = new mongoose.Schema({
   menu_id: {
