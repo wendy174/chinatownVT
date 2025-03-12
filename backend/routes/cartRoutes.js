@@ -27,30 +27,57 @@ router.get('/', async (req, res) => {
       res.status(500).json({ error: "Server error" });
     }
   });
+
+
+router.post('/remove-item', async (req, res) => { 
+  try { 
+      const { userId } = getAuth(req); 
+      if (!userId) return res.status(401).json({ error: "Unauthorized" });
+    
+      const {itemId} = req.body; 
+    
+      const result = await Cart.updateOne(
+        { userId },
+        { $pull: { items: { _id: itemId } } } // Removes the item with this ID
+    );
+
+      if (result.modifiedCount === 0) {
+        return res.status(404).json({ error: "Item not found in cart" });
+    }
+  
+      res.json({success: true})
+  } catch (error) { 
+      console.error(error); 
+      res.status(500).json({error: "Server error"})
+  }
+
+})
+
   
   // **POST /cart → Save or Update Cart**
   // Triggered with addToCart function from frontend 
   router.post('/', async (req, res) => {
     try {
-      const { userId } = getAuth(req);
-      if (!userId) return res.status(401).json({ error: "Unauthorized" });
-  
-      const { items } = req.body; // Extract items from the request body sent from frontend  
-      let cart = await Cart.findOne({ userId }); // Finds user's cart 
-  
-      if (cart) {
-        cart.items = items; // updates existing cart items to the items sent from the frontend 
-      } else {
-        cart = new Cart({ userId, items });
-      }
-  
-      await cart.save(); // saves cart to db 
-      res.json(cart); // respond back to frontend with updated cart 
+        const { userId } = getAuth(req);
+        if (!userId) return res.status(401).json({ error: "Unauthorized" });
+
+        const { items } = req.body;
+
+        const cart = await Cart.findOneAndUpdate(
+            { userId },
+            { $set: { items } },
+            { new: true, upsert: true } // `upsert: true` creates a new cart if it doesn't exist
+        );
+
+        res.json(cart);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Server error" });
+        console.error(error);
+        res.status(500).json({ error: "Server error" });
     }
-  });
+});
+
+
+
 
 
   // **DELETE /cart → Clear Cart on Logout**
@@ -59,8 +86,13 @@ router.delete('/', async (req, res) => {
         const { userId } = getAuth(req);
         if (!userId) return res.status(401).json({ error: "Unauthorized" });
 
-        await Cart.findOneAndDelete({ userId });
-        res.json({ message: "Cart cleared" });
+        // Update items to an empty array 
+
+        const result = await Cart.updateOne( 
+          { userId }, 
+          { $set: {items: [] } }
+        )
+        res.json({message: "Cart emptied"}); 
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "Server error" });

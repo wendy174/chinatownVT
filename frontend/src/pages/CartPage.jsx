@@ -10,8 +10,14 @@ export default function CartPage() {
 
   const { cartItems, setCartItems } = useContext(ShopContext); 
 
-  const handleClearCart = () => { 
-    setCartItems([])
+  const handleClearCart = async () => { 
+    setCartItems([]) // update local state 
+
+    await fetch("http://localhost:3000/cart", { 
+      method: "DELETE", 
+      credentials: "include", 
+    }); 
+
   }
 
   return (

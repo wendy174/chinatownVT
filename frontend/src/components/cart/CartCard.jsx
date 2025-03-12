@@ -31,9 +31,17 @@ import {
       }
     }
 
-    const removeItemFromCart = (id) => { 
-      setCartItems(cartItems.filter(singleItem => singleItem._id !== id))
-    }
+    const removeItemFromCart = async (id) => {
+      setCartItems((prevCart) => prevCart.filter((item) => item._id !== id));
+  
+      // Send request to backend to remove the item
+      await fetch("http://localhost:3000/cart/remove-item", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ itemId: id }), // Send the item's `_id` to backend
+      });
+  };
 
     return (
         <Card className="m-4">
