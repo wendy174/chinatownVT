@@ -47,6 +47,12 @@
 
 <!-- GETTING STARTED -->
 ## Getting Started
+
+## Docker Directions
+   ```sh
+   docker-compose up 
+   ```
+## Directions without docker 
 1. Clone the repo
    ```sh
    git clone https://github.com/wendy174/chinatownVT.git
