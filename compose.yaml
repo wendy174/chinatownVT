@@ -11,7 +11,7 @@ services: # Defines containers
       build: # Builds app image from dockerfile 
         context: backend 
       ports: 
-        - "3000:3000"
+        - "4000:3000"
       env_file: 
         - ./backend/.env # Load all envir from backend folder 
       depends_on: # Ensures mongo starts before express app 

@@ -35,7 +35,7 @@ import {
       setCartItems((prevCart) => prevCart.filter((item) => item._id !== id));
   
       // Send request to backend to remove the item
-      await fetch("http://localhost:3000/cart/remove-item", {
+      await fetch(`http://${window.location.hostname}:4000/cart/remove-item`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",

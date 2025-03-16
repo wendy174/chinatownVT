@@ -15,8 +15,8 @@ export default function MenuPage() {
   // Fetch menu items 
   useEffect(() => { 
     const fetchMenuItems = async () => { 
-      try { 
-        const resp = await fetch('http://localhost:3000/menu'); 
+      try {
+        const resp = await fetch(`http://${window.location.hostname}:4000/menu`); 
         const data = await resp.json();
         setMenu(data); 
       } catch (error) { 

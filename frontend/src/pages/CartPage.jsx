@@ -13,7 +13,7 @@ export default function CartPage() {
   const handleClearCart = async () => { 
     setCartItems([]) // update local state 
 
-    await fetch("http://localhost:3000/cart", { 
+    await fetch(`http://${window.location.hostname}//:4000/cart`, { 
       method: "DELETE", 
       credentials: "include", 
     }); 

@@ -22,7 +22,7 @@ export default function ShopContextProvider(props) {
     const fetchCartFromBackend = async () => { 
         // credentials: 'include' makes sure clerk token/cookies are sent
         try { 
-            const res = await fetch("http://localhost:3000/cart", { 
+            const res = await fetch(`http://${window.location.hostname}:4000/cart`, { 
                 credentials: "include"
             }); 
     
@@ -40,7 +40,7 @@ export default function ShopContextProvider(props) {
 
     const saveCartToBackend = async (newCart) => {
         if (isSignedIn) {
-            await fetch("http://localhost:3000/cart", {
+            await fetch(`http://${hostname}:4000/cart`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 credentials: "include",

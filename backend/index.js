@@ -14,9 +14,18 @@ const PORT = process.env.PORT || 3000;
 const { clerkMiddleware }  = require("@clerk/express")
 app.use(clerkMiddleware());
 
+
+const allowedOrigins = ['http://192.168.50.245:5173', 'http://localhost:5173'];
+
 // Cors 
 app.use(cors({
-  origin: "http://localhost:5173",  // ✅ Allow frontend access
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },  // ✅ Allow frontend access
   credentials: true,  // ✅ Allow cookies/session tokens to be sent
   methods: ["GET", "POST", "DELETE"],  // ✅ Allow required methods
   allowedHeaders: ["Content-Type", "Authorization"]  // ✅ Allow necessary headers
